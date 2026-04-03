@@ -25,7 +25,7 @@ logger = logging.getLogger("soc.ai")
 
 # ── Gemini config ──────────────────────────────────────────────────────────────
 # Set GEMINI_API_KEY environment variable; falls back to placeholder for safety.
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyC-9uMKvV62i4D0WZoDlabc4GDUxuOCbgo")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 GEMINI_MODEL   = "gemini-1.5-flash"
 GEMINI_TIMEOUT = 60  # seconds per request
 
