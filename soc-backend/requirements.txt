@@ -1,0 +1,6 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+elasticsearch[async]==8.14.0
+python-dotenv==1.0.1
+pydantic==2.8.2
+# uuid, time — stdlib, no install needed
