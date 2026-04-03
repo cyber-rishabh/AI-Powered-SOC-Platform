@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.2
+    container_name: soc-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  backend:
+    build: ./soc-backend
+    container_name: soc-backend
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTIC_HOST=http://elasticsearch:9200
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "8001:8001"
+    command: uvicorn main:app --host 0.0.0.0 --port 8001
+
+  frontend:
+    build: ./soc-dashboard
+    container_name: soc-frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    command: npm run dev
+
+volumes:
+  es_data:
