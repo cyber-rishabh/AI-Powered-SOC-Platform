@@ -6,6 +6,7 @@ Production-grade implementation with:
   [P4-2]  Strong result cache — keyed on pattern+stages+risk (80-95% quota savings)
   [P4-3]  No retry on 429 — immediate cooldown triggered instead
   [P4-4]  Smart trigger guard — skip AI for low-risk / duplicate chains
+  
   [P4-5]  Structured SOC analyst prompt with full chain context
   [P4-6]  Safe JSON parsing + full exception handling
   [FIX-1] 429 no longer retried — cooldown window enforced instead
@@ -25,7 +26,7 @@ logger = logging.getLogger("soc.ai")
 
 # ── Gemini config ──────────────────────────────────────────────────────────────
 # Set GEMINI_API_KEY environment variable; falls back to placeholder for safety.
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyC-9uMKvV62i4D0WZoDlabc4GDUxuOCbgo")
 GEMINI_MODEL   = "gemini-1.5-flash"
 GEMINI_TIMEOUT = 60  # seconds per request
 
